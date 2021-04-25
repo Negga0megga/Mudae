@@ -1,0 +1,26 @@
+2021-04-25T15:52:33.7767335+02:00  [INF] Selected profile 'default'. (81afe050)
+2021-04-25T15:52:33.7976926+02:00  [INF] [Gateway] Connecting... (3a91e634)
+2021-04-25T15:52:33.8119910+02:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2021-04-25T15:52:33.8134421+02:00  [INF] Hosting environment: "Production" (c3307c92)
+2021-04-25T15:52:33.8134759+02:00  [INF] Content root path: "C:\Users\micha\OneDrive\Pulpit\mudea" (b5d60022)
+2021-04-25T15:52:34.2314546+02:00  [INF] [Gateway] Identifying... (37d6c6c9)
+2021-04-25T15:52:34.9477330+02:00  [INF] [Gateway] Successfully identified. (271fd42f)
+2021-04-25T15:52:35.1857397+02:00  [INF] [Gateway] Awaiting sync for 18 guilds. (a83d0a96)
+2021-04-25T15:52:35.1968338+02:00  [WRN] Logged in as NeggaOmega#1381. (41f777a8)
+2021-04-25T15:52:35.2033070+02:00  [INF] Using configuration server 'MudaeFarm' (832758115308404788). (ca5ac9e4)
+2021-04-25T15:52:36.6040208+02:00  [INF] Loaded all configuration in 1,40s. (a3fca3d4)
+2021-04-25T15:52:36.6063629+02:00  [WRN] MudaeFarm is up and running! MudaeFarm will shut down when you close this window. Refer to https://github.com/chiyadev/MudaeFarm#configuration for the configuration guide. For additional logging information, restart MudaeFarm with a --verbose CLI argument. (a1ec1f79)
+2021-04-25T15:52:37.2461470+02:00  [INF] Ignoring character 'Nortkele Elektron (Sunahama)' in channel 'waifu' (829493990554075156, server '👑 NIBBAS 👑') because they are not wished. (1002ad74)
+2021-04-25T15:52:37.2473515+02:00  [INF] Sent roll 1 of batch 0 in channel 'waifu' (829493990554075156). (525c0358)
+2021-04-25T15:52:38.4041639+02:00  [INF] Ignoring character 'Yue (RL) (Lapis Re:LiGHTs)' in channel 'waifu' (829493990554075156, server '👑 NIBBAS 👑') because they are not wished. (90f569a0)
+2021-04-25T15:52:38.4044685+02:00  [INF] Sent roll 2 of batch 0 in channel 'waifu' (829493990554075156). (9d9ed96c)
+2021-04-25T15:52:39.5461333+02:00  [INF] Ignoring character 'Lore Beliferal (Yuusha ni Narenakatta Ore wa Shibushibu)' in channel 'waifu' (829493990554075156, server '👑 NIBBAS 👑') because they are not wished. (d84f3060)
+2021-04-25T15:52:41.5900716+02:00  [WRN] Sent command '$wa' in channel 'waifu' (829493990554075156) but did not receive expected Mudae response. (b7d729df)
+2021-04-25T15:52:41.6216697+02:00  [WRN] Could not roll '$wa' in channel 'waifu' (829493990554075156). (3d395a9c)
+System.Threading.Tasks.TaskCanceledException: A task was canceled.
+   at MudaeFarm.MudaeCommandHandler.ReceiveAsync(DiscordClient client, IChannel channel, CancellationToken cancellationToken) in C:\Projects\MudaeFarm\MudaeFarm\MudaeCommandHandler.cs:line 106
+   at MudaeFarm.MudaeCommandHandler.ReceiveAsync(DiscordClient client, IChannel channel, CancellationToken cancellationToken) in C:\Projects\MudaeFarm\MudaeFarm\MudaeCommandHandler.cs:line 106
+   at MudaeFarm.MudaeCommandHandler.SendAsync(IMessageChannel channel, String command, CancellationToken cancellationToken) in C:\Projects\MudaeFarm\MudaeFarm\MudaeCommandHandler.cs:line 47
+   at MudaeFarm.MudaeRoller.RunRollAsync(DiscordClient client, IMessageChannel channel, CancellationToken cancellationToken) in C:\Projects\MudaeFarm\MudaeFarm\MudaeRoller.cs:line 149
+2021-04-25T15:52:47.8462799+02:00  [INF] Application is shutting down... (90f52c38)
+2021-04-25T15:52:47.8519157+02:00  [INF] [Gateway] Disconnecting... (080a2550)

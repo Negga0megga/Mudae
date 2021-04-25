@@ -1,0 +1,236 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Disqord.Core</name>
+    </assembly>
+    <members>
+        <member name="T:Disqord.Color">
+            <summary>
+                Represents a color used by Discord.
+            </summary>
+        </member>
+        <member name="P:Disqord.Color.RawValue">
+            <summary>
+                Gets the raw value of this <see cref="T:Disqord.Color"/>.
+            </summary>
+        </member>
+        <member name="P:Disqord.Color.R">
+            <summary>
+                Gets the red component of this <see cref="T:Disqord.Color"/>.
+            </summary>
+        </member>
+        <member name="P:Disqord.Color.G">
+            <summary>
+                Gets the green component of this <see cref="T:Disqord.Color"/>.
+            </summary>
+        </member>
+        <member name="P:Disqord.Color.B">
+            <summary>
+                Gets the blue component of this <see cref="T:Disqord.Color"/>.
+            </summary>
+        </member>
+        <member name="M:Disqord.Color.#ctor(System.Int32)">
+            <summary>
+                Initialises a new <see cref="T:Disqord.Color"/> using the given raw value.
+            </summary>
+            <param name="rawValue"> The raw value. </param>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+                "Raw value must be a non-negative value less than or equal to 16777215."
+            </exception>
+        </member>
+        <member name="M:Disqord.Color.#ctor(System.Byte,System.Byte,System.Byte)">
+            <summary>
+                Initialises a new <see cref="T:Disqord.Color"/> using the given RGB values.
+            </summary>
+            <param name="r"> The red (0-255) component value. </param>
+            <param name="g"> The green (0-255) component value. </param>
+            <param name="b"> The blue (0-255) component value. </param>
+        </member>
+        <member name="M:Disqord.Color.#ctor(System.Single,System.Single,System.Single)">
+            <summary>
+                Initialises a new <see cref="T:Disqord.Color"/> using the given RGB values.
+            </summary>
+            <param name="r"> The red (0-1) component value. </param>
+            <param name="g"> The green (0-1) component value. </param>
+            <param name="b"> The blue (0-1) component value. </param>
+        </member>
+        <member name="M:Disqord.Color.ToString">
+            <summary>
+                Returns a hexadecimal representation of this <see cref="T:Disqord.Color"/>.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Disqord.Color.op_Implicit(System.Int32)~Disqord.Color">
+            <summary>
+                Implicitly initialises a new <see cref="T:Disqord.Color"/> from this raw value.
+            </summary>
+            <param name="value"> The raw value. </param>
+        </member>
+        <member name="M:Disqord.Color.op_Implicit(Disqord.Color)~System.Int32">
+            <summary>
+                Implicitly gets <see cref="P:Disqord.Color.RawValue"/> from the given <see cref="T:Disqord.Color"/>.
+            </summary>
+            <param name="value"></param>
+        </member>
+        <member name="T:Disqord.Library">
+            <summary>
+                Provides utilities related to the Disqord library.
+            </summary>
+        </member>
+        <member name="F:Disqord.Library.Version">
+            <summary>
+                Disqord build's version.
+            </summary>
+        </member>
+        <member name="F:Disqord.Library.RepositoryUrl">
+            <summary>
+                Disqord's repository url.
+            </summary>
+        </member>
+        <member name="F:Disqord.Library.UserAgent">
+            <summary>
+                Disqord's user agent.
+            </summary>
+        </member>
+        <member name="T:Disqord.Optional`1">
+            <summary>
+                Represents an optional value.
+            </summary>
+            <typeparam name="T"> The type of the optional value. </typeparam>
+        </member>
+        <member name="F:Disqord.Optional`1.Empty">
+            <summary>
+                An empty <see cref="T:Disqord.Optional`1"/> instance.
+            </summary>
+        </member>
+        <member name="P:Disqord.Optional`1.HasValue">
+            <summary>
+                Gets whether this <see cref="T:Disqord.Optional`1"/> has a value.
+            </summary>
+        </member>
+        <member name="P:Disqord.Optional`1.Value">
+            <summary>
+                Gets the value of this <see cref="T:Disqord.Optional`1"/>.
+            </summary>
+            <exception cref="T:System.InvalidOperationException">
+                This optional doesn't have a value.
+            </exception>
+        </member>
+        <member name="M:Disqord.Optional`1.#ctor(`0)">
+            <summary>
+                Initialises a new <see cref="T:Disqord.Optional`1"/> with the specified value.
+            </summary>
+            <param name="value"> The specified value. </param>
+        </member>
+        <member name="M:Disqord.Optional`1.GetValueOrDefault">
+            <summary>
+                Retrieves the value of this <see cref="T:Disqord.Optional`1"/>, or the default value of <typeparamref name="T"/>.
+            </summary>
+            <returns>
+                The value of this <see cref="T:Disqord.Optional`1"/> or the default value of <typeparamref name="T"/>.
+            </returns>
+        </member>
+        <member name="M:Disqord.Optional`1.GetValueOrDefault(`0)">
+            <summary>
+                Retrieves the value of this <see cref="T:Disqord.Optional`1"/>, or the provided default value.
+            </summary>
+            <returns>
+                The value of this <see cref="T:Disqord.Optional`1"/> or the provided default value.
+            </returns>
+        </member>
+        <member name="M:Disqord.Optional`1.GetValueOrDefault(System.Func{`0})">
+            <summary>
+                Retrieves the value of this <see cref="T:Disqord.Optional`1"/>, or the default value from the provided factory.
+            </summary>
+            <returns>
+                The value of this <see cref="T:Disqord.Optional`1"/> or the default value from the provided factory.
+            </returns>
+        </member>
+        <member name="M:Disqord.Optional`1.GetValueOrDefault``1(System.Func{``0,`0},``0)">
+            <summary>
+                Retrieves the value of this <see cref="T:Disqord.Optional`1"/>, or the default value from the provided factory.
+            </summary>
+            <returns>
+                The value of this <see cref="T:Disqord.Optional`1"/> or the default value from the provided factory.
+            </returns>
+        </member>
+        <member name="M:Disqord.Optional`1.GetHashCode">
+            <summary>
+                Returns a hash code for this <see cref="T:Disqord.Optional`1"/>.
+            </summary>
+            <returns>
+                The hash code.
+            </returns>
+        </member>
+        <member name="M:Disqord.Optional`1.ToString">
+            <summary>
+                Returns the string representation of this <see cref="T:Disqord.Optional`1"/>.
+            </summary>
+            <returns>
+                The string representation of this <see cref="T:Disqord.Optional`1"/>.
+            </returns>
+        </member>
+        <member name="M:Disqord.Optional`1.Equals(System.Object)">
+            <summary>
+                Checks whether this <see cref="T:Disqord.Optional`1"/> or this <see cref="P:Disqord.Optional`1.Value"/> are equal to the specified <see cref="T:System.Object"/>.
+            </summary>
+            <param name="obj"> The <see cref="T:System.Object"/> to compare against. </param>
+            <returns>
+                The <see cref="T:System.Boolean"/> value reresenting whether the comparison succeeded.
+            </returns>
+        </member>
+        <member name="M:Disqord.Optional`1.Equals(`0)">
+            <summary>
+                Checks whether this <see cref="P:Disqord.Optional`1.Value"/> is equal to the specified <typeparamref name="T"/> value.
+            </summary>
+            <param name="other"> The <typeparamref name="T"/> value to compare against. </param>
+            <returns>
+                The <see cref="T:System.Boolean"/> value reresenting whether the comparison succeeded.
+            </returns>
+        </member>
+        <member name="M:Disqord.Optional`1.Equals(Disqord.Optional{`0})">
+            <summary>
+                Checks whether this <see cref="P:Disqord.Optional`1.Value"/> is equal to the specified <see cref="T:Disqord.Optional`1"/>.
+            </summary>
+            <param name="other"> The <see cref="T:Disqord.Optional`1"/> to compare against. </param>
+            <returns>
+                The <see cref="T:System.Boolean"/> value reresenting whether the comparison succeeded.
+            </returns>
+        </member>
+        <member name="M:Disqord.Optional`1.op_Implicit(`0)~Disqord.Optional{`0}">
+            <summary>
+                Implicitly converts the <paramref name="value"/> to an <see cref="T:Disqord.Optional`1"/>.
+            </summary>
+            <param name="value"> The value to convert. </param>
+        </member>
+        <member name="M:Disqord.Optional`1.op_Explicit(Disqord.Optional{`0})~`0">
+            <summary>
+                Implicitly gets the <see cref="P:Disqord.Optional`1.Value"/>.
+            </summary>
+            <param name="value"> The optional to get the value from. </param>
+            <exception cref="T:System.InvalidOperationException">
+                This optional doesn't have a value.
+            </exception>
+        </member>
+        <member name="M:Disqord.Optional`1.op_Equality(Disqord.Optional{`0},Disqord.Optional{`0})">
+            <summary>
+                Checks if this <see cref="T:Disqord.Optional`1"/> is equal to another <see cref="T:Disqord.Optional`1"/>.
+            </summary>
+            <param name="left"> The left-hand side <see cref="T:Disqord.Optional`1"/>. </param>
+            <param name="right"> The right-hand side <see cref="T:Disqord.Optional`1"/> to compare against. </param>
+            <returns>
+                The <see cref="T:System.Boolean"/> value reresenting whether the comparison succeeded.
+            </returns>
+        </member>
+        <member name="M:Disqord.Optional`1.op_Inequality(Disqord.Optional{`0},Disqord.Optional{`0})">
+            <summary>
+                Checks if this <see cref="T:Disqord.Optional`1"/> isn't equal to another <see cref="T:Disqord.Optional`1"/>.
+            </summary>
+            <param name="left"> The left-hand side <see cref="T:Disqord.Optional`1"/>. </param>
+            <param name="right"> The right-hand side <see cref="T:Disqord.Optional`1"/> to compare against. </param>
+            <returns>
+                The <see cref="T:System.Boolean"/> value reresenting whether the comparison succeeded.
+            </returns>
+        </member>
+    </members>
+</doc>

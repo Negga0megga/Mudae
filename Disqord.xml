@@ -1,0 +1,497 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Disqord</name>
+    </assembly>
+    <members>
+        <member name="P:Disqord.DiscordClientBase.TokenType">
+            <summary>
+                Gets the token type this client is using.
+            </summary>
+        </member>
+        <member name="P:Disqord.DiscordClientBase.CurrentUser">
+            <summary>
+                Gets the currently logged-in user.
+            </summary>
+        </member>
+        <member name="P:Disqord.DiscordClientBase.Guilds">
+            <summary>
+                Gets the guilds for this client.
+            </summary>
+        </member>
+        <member name="P:Disqord.DiscordClientBase.Users">
+            <summary>
+                Gets the users for this client.
+            </summary>
+        </member>
+        <member name="P:Disqord.DiscordClientBase.PrivateChannels">
+            <summary>
+                Gets the private channels for this client.
+            </summary>
+        </member>
+        <member name="P:Disqord.DiscordClientBase.DmChannels">
+            <summary>
+                Gets the DM channels for this client.
+            </summary>
+        </member>
+        <member name="P:Disqord.DiscordClientBase.GroupChannels">
+            <summary>
+                Gets the group DM channels for this client.
+            </summary>
+        </member>
+        <member name="M:Disqord.DiscordClientBase.GetUser(Disqord.Snowflake)">
+            <summary>
+                Looks up the user cache for the <see cref="T:Disqord.CachedUser"/> with the given id.
+            </summary>
+            <param name="id"> The id of the user. </param>
+            <returns>
+                The found <see cref="T:Disqord.CachedUser"/> or <see langword="null"/>.
+            </returns>
+        </member>
+        <member name="P:Disqord.DiscordClientBaseConfiguration.MessageCache">
+            <summary>
+                Gets or sets the <see cref="T:Disqord.MessageCache"/> the client should use to cache messages.
+                If not set, the client will default to <see cref="T:Disqord.DefaultMessageCache"/> with the capacity set to 100.
+            </summary>
+        </member>
+        <member name="P:Disqord.DiscordClientBaseConfiguration.Status">
+            <summary>
+                Gets or sets the status the client should set after connecting.
+                If not set, the client will default to <see cref="F:Disqord.UserStatus.Online"/>.
+            </summary>
+        </member>
+        <member name="P:Disqord.DiscordClientBaseConfiguration.Activity">
+            <summary>
+                Gets or sets the activity the client should set after connecting.
+                If not set, the client will not set any activity.
+            </summary>
+        </member>
+        <member name="P:Disqord.DiscordClient.Latency">
+            <summary>
+                Gets the latency between heartbeats.
+            </summary>
+        </member>
+        <member name="P:Disqord.Events.EmojiReactionsClearedEventArgs.Emoji">
+            <summary>
+                Gets the cleared <see cref="T:Disqord.IEmoji"/>.
+            </summary>
+        </member>
+        <member name="P:Disqord.Events.EmojiReactionsClearedEventArgs.Data">
+            <summary>
+                Gets the cleared reaction data.
+                If the message wasn't cached, was cached at a later point this might return <see langword="null"/>.
+            </summary>
+        </member>
+        <member name="P:Disqord.Events.InviteCreatedEventArgs.Inviter">
+            <summary>
+                Gets the user that created the invite. Returns <see langword="null"/>, if the invite was created by, for example, a widget.
+            </summary>
+        </member>
+        <member name="T:Disqord.Events.InviteDeletedEventArgs">
+            <summary>
+                Represents the arguments for the <see cref="E:Disqord.DiscordClientBase.InviteDeleted"/> event.
+            </summary>
+        </member>
+        <member name="P:Disqord.Events.InviteDeletedEventArgs.GuildId">
+            <summary>
+                Gets the id of the guild the invite's channel was in.
+                Returns <see langword="null"/>, if the invite was for a group channel.
+            </summary>
+        </member>
+        <member name="P:Disqord.Events.InviteDeletedEventArgs.ChannelId">
+            <summary>
+                Gets the id of the channel the invite was for.
+            </summary>
+        </member>
+        <member name="P:Disqord.Events.InviteDeletedEventArgs.Code">
+            <summary>
+                Gets the unique code of the invite.
+            </summary>
+        </member>
+        <member name="P:Disqord.Events.ReactionsClearedEventArgs.Reactions">
+            <summary>
+                Gets the cleared reactions.
+                If the message wasn't cached, was cached at a later point this will return incomplete or no entries.
+            </summary>
+        </member>
+        <member name="T:Disqord.Collections.CircularBuffer`1">
+            <summary>
+                Represents a first and last automatically pops out when the capacity is reached collection.
+            </summary>
+            <typeparam name="T"> The <see cref="T:System.Type"/> of the elements. </typeparam>
+        </member>
+        <member name="P:Disqord.Collections.CircularBuffer`1.Count">
+            <summary>
+                Gets the current amount of items this <see cref="T:Disqord.Collections.CircularBuffer`1"/>.
+            </summary>
+        </member>
+        <member name="P:Disqord.Collections.CircularBuffer`1.IsReadOnly">
+            <summary>
+                Gets whether this <see cref="T:Disqord.Collections.CircularBuffer`1"/> is read-only. Always <see langword="false"/>.
+            </summary>
+        </member>
+        <member name="P:Disqord.Collections.CircularBuffer`1.Capacity">
+            <summary>
+                Gets the capacity of this <see cref="T:Disqord.Collections.CircularBuffer`1"/>.
+            </summary>
+        </member>
+        <member name="M:Disqord.Collections.CircularBuffer`1.#ctor(System.Int32)">
+            <summary>
+                Initialises a new <see cref="T:Disqord.Collections.CircularBuffer`1"/> with the specified capacity.
+            </summary>
+            <param name="capacity"> The capacity to use. </param>
+        </member>
+        <member name="P:Disqord.Collections.CircularBuffer`1.Item(System.Int32)">
+            <summary>
+                Gets the element at the specified index.
+            </summary>
+            <param name="index"> The zero-based index of the element to get. </param>
+            <returns>
+                The element at the specified index.
+            </returns>
+        </member>
+        <member name="M:Disqord.Collections.CircularBuffer`1.Clear">
+            <summary>
+                Removes all elements from this <see cref="T:Disqord.Collections.CircularBuffer`1"/>.
+            </summary>
+        </member>
+        <member name="M:Disqord.Collections.CircularBuffer`1.Contains(`0)">
+            <summary>
+                Determines whether an element is this <see cref="T:Disqord.Collections.CircularBuffer`1"/>.
+            </summary>
+            <param name="item"> The element to check for. </param>
+            <returns>
+                <see langword="true"/> if the value was found, otherwise <see langword="false"/>.
+            </returns>
+        </member>
+        <member name="M:Disqord.Collections.CircularBuffer`1.CopyTo(`0[],System.Int32)">
+            <summary>
+                Copies this <see cref="T:Disqord.Collections.CircularBuffer`1"/> to a compatible one-dimensional array,
+                starting at the specified index the target array.
+            </summary>
+            <param name="array"> The array to copy to. </param>
+            <param name="arrayIndex"> The zero-based index the array at which copying begins. </param>
+        </member>
+        <member name="M:Disqord.Collections.CircularBuffer`1.GetEnumerator">
+            <summary>
+                Returns an enumerator that iterates through a copy of this <see cref="T:Disqord.Collections.CircularBuffer`1"/>.
+            </summary>
+            <returns>
+                An enumerator.
+            </returns>
+        </member>
+        <member name="T:Disqord.DefaultMessageCache">
+            <summary>
+                Represents a per-channel circular cache of the given capacity.
+            </summary>
+        </member>
+        <member name="P:Disqord.DefaultMessageCache.Capacity">
+            <summary>
+                Gets the capacity of each channel's circular cache.
+            </summary>
+        </member>
+        <member name="M:Disqord.DefaultMessageCache.#ctor(System.Int32)">
+            <summary>
+                Instiantiates a new <see cref="T:Disqord.DefaultMessageCache"/> with the specified capacity.
+            </summary>
+            <param name="capacity"> The capacity of each channel's circular cache. </param>
+        </member>
+        <member name="M:Disqord.DefaultMessageCache.TryAddMessage(Disqord.CachedUserMessage)">
+            <summary>
+                Attempts to cache the given message.
+            </summary>
+            <param name="message"> The message to cache. </param>
+            <returns>
+                A <see cref="T:System.Boolean"/> indicating whether the message was cached.
+            </returns>
+        </member>
+        <member name="M:Disqord.DefaultMessageCache.TryGetMessage(Disqord.Snowflake,Disqord.Snowflake,Disqord.CachedUserMessage@)">
+            <summary>
+                Attempts to fetch a message from the cache with the specified id, for the specified channel.
+            </summary>
+            <param name="channelId"> The message's channel's id. </param>
+            <param name="messageId"> The id of the message. </param>
+            <param name="message"> The optional cached message. </param>
+            <returns>
+                A <see cref="T:System.Boolean"/> indicating whether the message was present in the cache.
+            </returns>
+        </member>
+        <member name="M:Disqord.DefaultMessageCache.TryGetMessages(Disqord.Snowflake,System.Collections.Generic.IEnumerable{Disqord.CachedUserMessage}@)">
+            <summary>
+                Attempts to fetch messages from the cache for the specified channel.
+            </summary>
+            <param name="channelId"> The id of the channel. </param>
+            <param name="messages"> The optional cached messages. </param>
+            <returns>
+                A <see cref="T:System.Boolean"/> indicating whether the message was present in the cache.
+            </returns>
+        </member>
+        <member name="M:Disqord.DefaultMessageCache.TryRemoveMessage(Disqord.Snowflake,Disqord.Snowflake,Disqord.CachedUserMessage@)">
+            <summary>
+                Attempts to remove a message from the cache with the specified id, for the specified channel.
+            </summary>
+            <param name="channelId"> The message's channel's id. </param>
+            <param name="messageId"> The id of the message. </param>
+            <param name="message"> The optional cached message. </param>
+            <returns>
+                A <see cref="T:System.Boolean"/> indicating whether the message was present in the cache.
+            </returns>
+        </member>
+        <member name="M:Disqord.DefaultMessageCache.TryRemoveMessages(Disqord.Snowflake,System.Collections.Generic.IEnumerable{Disqord.CachedUserMessage}@)">
+            <summary>
+                Attempts to clear the cache for the specified channel.
+            </summary>
+            <param name="channelId"> The channel's id to clear the cache for. </param>
+            <param name="messages"> The cleared cached messages. </param>
+            <returns>
+                A <see cref="T:System.Boolean"/> indicating whether any messages were cleared.
+            </returns>
+        </member>
+        <member name="M:Disqord.DefaultMessageCache.Clear">
+            <summary>
+                Clears the entire cache.
+            </summary>
+        </member>
+        <member name="T:Disqord.DummyMessageCache">
+            <summary>
+                Represents a dummy cache that never caches anything.
+            </summary>
+        </member>
+        <member name="F:Disqord.DummyMessageCache.Instance">
+            <summary>
+                The singleton instance of <see cref="T:Disqord.DummyMessageCache"/>.
+            </summary>
+        </member>
+        <member name="M:Disqord.DummyMessageCache.TryGetMessage(Disqord.Snowflake,Disqord.Snowflake,Disqord.CachedUserMessage@)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Disqord.DummyMessageCache.TryGetMessages(Disqord.Snowflake,System.Collections.Generic.IEnumerable{Disqord.CachedUserMessage}@)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Disqord.DummyMessageCache.TryRemoveMessage(Disqord.Snowflake,Disqord.Snowflake,Disqord.CachedUserMessage@)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Disqord.DummyMessageCache.TryRemoveMessages(Disqord.Snowflake,System.Collections.Generic.IEnumerable{Disqord.CachedUserMessage}@)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Disqord.DummyMessageCache.Clear">
+            <inheritdoc/>
+        </member>
+        <member name="T:Disqord.MessageCache">
+            <summary>
+                Represents the base class for message caches. Implementations of this class should be thread-safe.
+            </summary>
+        </member>
+        <member name="M:Disqord.MessageCache.#ctor">
+            <summary>
+                Instiantiates a new <see cref="T:Disqord.MessageCache"/>.
+            </summary>
+        </member>
+        <member name="M:Disqord.MessageCache.TryAddMessage(Disqord.CachedUserMessage)">
+            <summary>
+                Attempts to cache the given message.
+            </summary>
+            <param name="message"> The message to cache. </param>
+            <returns>
+                A <see cref="T:System.Boolean"/> indicating whether the message was cached.
+            </returns>
+        </member>
+        <member name="M:Disqord.MessageCache.TryGetMessage(Disqord.Snowflake,Disqord.Snowflake,Disqord.CachedUserMessage@)">
+            <summary>
+                Attempts to get a message from the cache with the specified id, for the specified channel.
+            </summary>
+            <param name="channelId"> The id of the message's channel. </param>
+            <param name="messageId"> The id of the message. </param>
+            <param name="message"> The optional cached message. </param>
+            <returns>
+                A <see cref="T:System.Boolean"/> indicating whether the message was present in the cache.
+            </returns>
+        </member>
+        <member name="M:Disqord.MessageCache.TryGetMessages(Disqord.Snowflake,System.Collections.Generic.IEnumerable{Disqord.CachedUserMessage}@)">
+            <summary>
+                Attempts to get messages from the cache for the specified channel.
+            </summary>
+            <param name="channelId"> The id of the channel. </param>
+            <param name="messages"> The optional cached messages. </param>
+            <returns>
+                A <see cref="T:System.Boolean"/> indicating whether the message was present in the cache.
+            </returns>
+        </member>
+        <member name="M:Disqord.MessageCache.TryRemoveMessage(Disqord.Snowflake,Disqord.Snowflake,Disqord.CachedUserMessage@)">
+            <summary>
+                Attempts to remove a message from the cache with the specified id, for the specified channel.
+            </summary>
+            <param name="channelId"> The id of the message's channel. </param>
+            <param name="messageId"> The id of the message. </param>
+            <param name="message"> The optional cached message. </param>
+            <returns>
+                A <see cref="T:System.Boolean"/> indicating whether the message was present in the cache.
+            </returns>
+        </member>
+        <member name="M:Disqord.MessageCache.TryRemoveMessages(Disqord.Snowflake,System.Collections.Generic.IEnumerable{Disqord.CachedUserMessage}@)">
+            <summary>
+                Attempts to remove messages from the cache for the specified channel.
+            </summary>
+            <param name="channelId"> The id of the channel. </param>
+            <param name="messages"> The cleared cached messages. </param>
+            <returns>
+                A <see cref="T:System.Boolean"/> indicating whether any messages were cleared.
+            </returns>
+        </member>
+        <member name="M:Disqord.MessageCache.Clear">
+            <summary>
+                Clears the entire cache.
+            </summary>
+        </member>
+        <member name="P:Disqord.Sharding.DiscordSharderConfiguration.ShardCount">
+            <summary>
+                Gets or sets the optional shard count.
+                If this is set, the sharder will use it instead of the shard count recommended by Discord.
+            </summary>
+        </member>
+        <member name="M:Disqord.Sharding.DiscordSharderConfiguration.#ctor">
+            <summary>
+                Instantiates a new <see cref="T:Disqord.Sharding.DiscordSharderConfiguration"/>.
+            </summary>
+        </member>
+        <member name="T:Disqord.CachedDiscordEntity">
+            <summary>
+                Represents a cached Discord entity.
+            </summary>
+        </member>
+        <member name="P:Disqord.CachedDiscordEntity.Client">
+            <inheritdoc cref="P:Disqord.IDiscordEntity.Client"/>
+        </member>
+        <member name="T:Disqord.CachedSnowflakeEntity">
+            <summary>
+                Represents a cached Discord entity with a unique id.
+            </summary>
+        </member>
+        <member name="P:Disqord.CachedSnowflakeEntity.Id">
+            <inheritdoc/>
+        </member>
+        <member name="P:Disqord.CachedSnowflakeEntity.CreatedAt">
+            <inheritdoc/>
+        </member>
+        <member name="M:Disqord.ICachedMessageChannel.GetMessage(Disqord.Snowflake)">
+            <summary>
+                Attempts to get a message from the message cache.
+            </summary>
+            <param name="id"> The id of the message. </param>
+            <returns>
+                A <see cref="T:Disqord.CachedUserMessage"/> or <see langword="null"/> if it was not cached.
+            </returns>
+        </member>
+        <member name="M:Disqord.ICachedMessageChannel.GetMessages">
+            <summary>
+                Attempts to get messages from the message cache.
+            </summary>
+            <returns>
+                An <see cref="T:System.Collections.Generic.IReadOnlyList`1"/> of <see cref="T:Disqord.CachedUserMessage"/>s or <see langword="null"/> if it was not cached.
+            </returns>
+        </member>
+        <member name="T:Disqord.CachedRelationship">
+            <summary>
+                Represents a relationship with a user.
+            </summary>
+        </member>
+        <member name="P:Disqord.CachedRelationship.User">
+            <summary>
+                Gets the user the relationship is for.
+            </summary>
+        </member>
+        <member name="P:Disqord.CachedRelationship.Type">
+            <summary>
+                Gets the type of the relationship.
+            </summary>
+        </member>
+        <member name="M:Disqord.CachedRelationship.AcceptAsync(Disqord.Rest.RestRequestOptions)">
+            <summary>
+                Accepts this relationship if <see cref="P:Disqord.CachedRelationship.Type"/> is <see cref="F:Disqord.RelationshipType.IncomingFriendRequest"/>. Throws otherwise.
+            </summary>
+            <exception cref="T:System.InvalidOperationException">
+                Relationship's type must be an incoming friend request.
+            </exception>
+        </member>
+        <member name="M:Disqord.CachedRelationship.DeleteAsync(Disqord.Rest.RestRequestOptions)">
+            <summary>
+                Deletes this relationship regardless of <see cref="P:Disqord.CachedRelationship.Type"/>.
+            </summary>
+        </member>
+        <member name="T:Disqord.Activity">
+            <summary>
+                Represents a user's activity.
+            </summary>
+        </member>
+        <member name="T:Disqord.ActivityFlags">
+            <summary>
+                Describes what the activity includes.
+            </summary>
+        </member>
+        <member name="T:Disqord.ActivityType">
+            <summary>
+                Represents the type of a user's activity.
+            </summary>
+        </member>
+        <member name="T:Disqord.CustomActivity">
+            <summary>
+                Represents a user's custom activity.
+            </summary>
+        </member>
+        <member name="T:Disqord.RichActivity">
+            <summary>
+                Represents a user's rich activity.
+            </summary>
+        </member>
+        <member name="T:Disqord.SpotifyActivity">
+            <summary>
+                Represents a user's Spotify activity.
+            </summary>
+        </member>
+        <member name="T:Disqord.StreamingActivity">
+            <summary>
+                Represents a user's streaming activity.
+            </summary>
+        </member>
+        <member name="P:Disqord.CachedCurrentUser.Relationship">
+            <summary>
+                Throws <see cref="T:System.InvalidOperationException"/>.
+            </summary>
+        </member>
+        <member name="P:Disqord.CachedCurrentUser.DmChannel">
+            <summary>
+                Throws <see cref="T:System.InvalidOperationException"/>.
+            </summary>
+        </member>
+        <member name="T:Disqord.GatewayDispatch">
+            <summary>
+                Represents a Discord gateway dispatch.
+            </summary>
+        </member>
+        <member name="P:Disqord.Models.Dispatches.RequestOfflineMembersModel.GuildId">
+            <summary>
+                A snowflake or an array of snowflakes.
+            </summary>
+        </member>
+        <member name="P:Disqord.Models.PayloadModel.Op">
+            <summary>
+                Gets or sets the opcode for the payload.
+            </summary>
+        </member>
+        <member name="P:Disqord.Models.PayloadModel.D">
+            <summary>
+                Gets or sets the event data.
+            </summary>
+        </member>
+        <member name="P:Disqord.Models.PayloadModel.S">
+            <summary>
+                Gets or sets the sequence number, used for resuming sessions and heartbeats.
+            </summary>
+        </member>
+        <member name="P:Disqord.Models.PayloadModel.T">
+            <summary>
+                Gets or sets the event name for this payload.
+            </summary>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,30 @@
+2021-04-25T15:52:50.0617114+02:00  [INF] Selected profile 'default'. (81afe050)
+2021-04-25T15:52:50.0827338+02:00  [INF] [Gateway] Connecting... (3a91e634)
+2021-04-25T15:52:50.0964807+02:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2021-04-25T15:52:50.0979768+02:00  [INF] Hosting environment: "Production" (c3307c92)
+2021-04-25T15:52:50.0980095+02:00  [INF] Content root path: "C:\Users\micha\OneDrive\Pulpit\mudea" (b5d60022)
+2021-04-25T15:52:50.4945083+02:00  [INF] [Gateway] Identifying... (37d6c6c9)
+2021-04-25T15:52:51.4015061+02:00  [INF] [Gateway] Successfully identified. (271fd42f)
+2021-04-25T15:52:51.6300101+02:00  [INF] [Gateway] Awaiting sync for 18 guilds. (a83d0a96)
+2021-04-25T15:52:51.6394038+02:00  [WRN] Logged in as NeggaOmega#1381. (41f777a8)
+2021-04-25T15:52:51.6457189+02:00  [INF] Using configuration server 'MudaeFarm' (832758115308404788). (ca5ac9e4)
+2021-04-25T15:52:53.1404896+02:00  [INF] Loaded all configuration in 1,49s. (f1205186)
+2021-04-25T15:52:53.1425475+02:00  [WRN] MudaeFarm is up and running! MudaeFarm will shut down when you close this window. Refer to https://github.com/chiyadev/MudaeFarm#configuration for the configuration guide. For additional logging information, restart MudaeFarm with a --verbose CLI argument. (a1ec1f79)
+2021-04-25T15:52:53.8207917+02:00  [INF] Ignoring character 'Shimei Ryomou (Ikkitousen)' in channel 'waifu' (829493990554075156, server '👑 NIBBAS 👑') because they are not wished. (2c473f17)
+2021-04-25T15:52:53.8220044+02:00  [INF] Sent roll 1 of batch 0 in channel 'waifu' (829493990554075156). (525c0358)
+2021-04-25T15:52:54.9443590+02:00  [INF] Ignoring character 'Fox Devil (Chainsaw Man)' in channel 'waifu' (829493990554075156, server '👑 NIBBAS 👑') because they are not wished. (3a971efd)
+2021-04-25T15:52:54.9446603+02:00  [INF] Sent roll 2 of batch 0 in channel 'waifu' (829493990554075156). (9d9ed96c)
+2021-04-25T15:52:56.0981434+02:00  [WRN] Attempting to claim character 'Xenovia Quarta (High School DxD)' in channel 'waifu' (829493990554075156, server '👑 NIBBAS 👑')... (929b535b)
+2021-04-25T15:52:56.0984269+02:00  [INF] Sent roll 3 of batch 0 in channel 'waifu' (829493990554075156). (2e0e4629)
+2021-04-25T15:52:56.8130845+02:00  [WRN] Claimed character 'Xenovia Quarta (High School DxD)' in channel 'waifu' (829493990554075156, server '👑 NIBBAS 👑') in 716,7437ms. (84f0361d)
+2021-04-25T15:52:57.2873866+02:00  [INF] Ignoring character 'Tisa (Onii-chan no Hanbun wa Yokubou)' in channel 'waifu' (829493990554075156, server '👑 NIBBAS 👑') because they are not wished. (fb28b7ca)
+2021-04-25T15:52:57.2875656+02:00  [INF] Sent roll 4 of batch 0 in channel 'waifu' (829493990554075156). (cd0f983a)
+2021-04-25T15:53:00.3292944+02:00  [WRN] Sent command '$wa' in channel 'waifu' (829493990554075156) but did not receive expected Mudae response. (b7d729df)
+2021-04-25T15:53:00.3417816+02:00  [WRN] Could not roll '$wa' in channel 'waifu' (829493990554075156). (3d395a9c)
+System.Threading.Tasks.TaskCanceledException: A task was canceled.
+   at MudaeFarm.MudaeCommandHandler.ReceiveAsync(DiscordClient client, IChannel channel, CancellationToken cancellationToken) in C:\Projects\MudaeFarm\MudaeFarm\MudaeCommandHandler.cs:line 106
+   at MudaeFarm.MudaeCommandHandler.ReceiveAsync(DiscordClient client, IChannel channel, CancellationToken cancellationToken) in C:\Projects\MudaeFarm\MudaeFarm\MudaeCommandHandler.cs:line 106
+   at MudaeFarm.MudaeCommandHandler.SendAsync(IMessageChannel channel, String command, CancellationToken cancellationToken) in C:\Projects\MudaeFarm\MudaeFarm\MudaeCommandHandler.cs:line 47
+   at MudaeFarm.MudaeRoller.RunRollAsync(DiscordClient client, IMessageChannel channel, CancellationToken cancellationToken) in C:\Projects\MudaeFarm\MudaeFarm\MudaeRoller.cs:line 149
+2021-04-25T16:00:22.5814020+02:00  [INF] Application is shutting down... (90f52c38)
+2021-04-25T16:00:22.5868498+02:00  [INF] [Gateway] Disconnecting... (080a2550)

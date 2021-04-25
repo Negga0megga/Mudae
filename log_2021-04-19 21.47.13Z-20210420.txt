@@ -1,0 +1,2 @@
+2021-04-20T00:09:29.9095810+02:00  [INF] Application is shutting down... (90f52c38)
+2021-04-20T00:09:29.9147694+02:00  [INF] [Gateway] Disconnecting... (080a2550)

@@ -1,0 +1,860 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Disqord.Rest</name>
+    </assembly>
+    <members>
+        <member name="P:Disqord.Rest.RestRequestOptionsBuilder.Timeout">
+            <summary>
+                Gets or sets the <see cref="T:System.TimeSpan"/> representing how long the REST client should wait before timing out the request.
+            </summary>
+        </member>
+        <member name="P:Disqord.Rest.RestRequestOptionsBuilder.CancellationToken">
+            <summary>
+                Gets or sets the <see cref="T:System.Threading.CancellationToken"/> representing the cancellation token for the REST request.
+            </summary>
+        </member>
+        <member name="P:Disqord.Rest.RestRequestOptionsBuilder.MfaCode">
+            <summary>
+                Gets or sets the six-digit numeric MFA code to be used with <see cref="F:Disqord.TokenType.User"/> clients,
+                when using an endpoint that requires MFA authentication.
+            </summary>
+        </member>
+        <member name="P:Disqord.Rest.RestRequestOptionsBuilder.Password">
+            <summary>
+                Gets or sets the current user's password to be used with <see cref="F:Disqord.TokenType.User"/> clients,
+                when using an endpoint that requires the current user's password.
+            </summary>
+        </member>
+        <member name="P:Disqord.Rest.RestRequestOptionsBuilder.Reason">
+            <summary>
+                Gets or sets the audit log reason.
+            </summary>
+        </member>
+        <member name="P:Disqord.Rest.RestRequestOptionsBuilder.MaximumRateLimitDuration">
+            <summary>
+                Gets or sets the maximum rate-limit duration to delay for instead of throwing.
+            </summary>
+        </member>
+        <member name="M:Disqord.Rest.RestRequestOptionsBuilder.#ctor">
+            <summary>
+                Initialises a new <see cref="T:Disqord.Rest.RestRequestOptionsBuilder"/>.
+            </summary>
+        </member>
+        <member name="T:Disqord.Rest.RestRequestOptions">
+            <summary>
+                Represents a set of options that can be used to customise REST requests.
+            </summary>
+        </member>
+        <member name="P:Disqord.Rest.RestRequestOptions.Timeout">
+            <summary>
+                Gets the <see cref="T:System.TimeSpan"/> representing how long the REST client should wait before timing out the request.
+            </summary>
+        </member>
+        <member name="P:Disqord.Rest.RestRequestOptions.CancellationToken">
+            <summary>
+                Gets the <see cref="T:System.Threading.CancellationToken"/> representing the cancellation token for the REST request.
+            </summary>
+        </member>
+        <member name="P:Disqord.Rest.RestRequestOptions.MfaCode">
+            <summary>
+                Gets the six-digit numeric MFA code to be used with <see cref="F:Disqord.TokenType.User"/> clients,
+                when using an endpoint that requires MFA authentication.
+            </summary>
+        </member>
+        <member name="P:Disqord.Rest.RestRequestOptions.Password">
+            <summary>
+                Gets the current user's password to be used with <see cref="F:Disqord.TokenType.User"/> clients,
+                when using an endpoint that requires the current user's password.
+            </summary>
+        </member>
+        <member name="P:Disqord.Rest.RestRequestOptions.Reason">
+            <summary>
+                Gets the audit log reason.
+            </summary>
+        </member>
+        <member name="P:Disqord.Rest.RestRequestOptions.MaximumRateLimitDuration">
+            <summary>
+                Gets the maximum rate-limit duration to delay for instead of throwing.
+            </summary>
+        </member>
+        <member name="M:Disqord.Rest.RestRequestOptions.Clone">
+            <summary>
+                Creates a copy of this <see cref="T:Disqord.Rest.RestRequestOptions"/>.
+            </summary>
+        </member>
+        <member name="T:Disqord.Rest.RestRequestEnumerable`1">
+            <summary>
+                Represents an asynchronously paged enumerable of <typeparamref name="T"/>s.
+                Does not support multiple enumerations.
+            </summary>
+            <typeparam name="T"> The <see cref="T:System.Type"/> of items in pages. </typeparam>
+        </member>
+        <member name="M:Disqord.Rest.RestRequestEnumerable`1.FlattenAsync">
+            <summary>
+                Flattens this <see cref="T:Disqord.Rest.RestRequestEnumerable`1"/> into a single read-only list.
+            </summary>
+            <returns>
+                A flattened list of <typeparamref name="T"/>s.
+            </returns>
+        </member>
+        <member name="P:Disqord.Rest.RestDiscordClient.TokenType">
+            <summary>
+                Gets the token type this client is using.
+                Will throw an exception, if <see cref="P:Disqord.Rest.RestDiscordClient.HasAuthorization"/> returns <see langword="false"/>.
+            </summary>
+            <exception cref="T:System.InvalidOperationException">
+                This client has no authorization.
+            </exception>
+        </member>
+        <member name="P:Disqord.Rest.RestDiscordClient.HasAuthorization">
+            <summary>
+                Gets whether this client has an authorization token.
+                Returns <see langword="true"/> for all normal clients and for logged in
+                clients created using <see cref="M:Disqord.Rest.RestDiscordClient.CreateWithoutAuthorization(Disqord.Rest.RestDiscordClientConfiguration)"/>.
+            </summary>
+        </member>
+        <member name="M:Disqord.Rest.RestDiscordClient.CreateWithoutAuthorization(Disqord.Rest.RestDiscordClientConfiguration)">
+            <summary>
+                Initialises a new <see cref="T:Disqord.Rest.RestDiscordClient"/> without authorization.
+            </summary>
+        </member>
+        <member name="M:Disqord.Rest.RestDiscordClient.LoginAsync(System.String,System.String,Disqord.Rest.RestRequestOptions)">
+            <summary>
+                Performs a user account login using the provided <paramref name="email"/> and <paramref name="password"/>.
+                This method can only be used with a <see cref="T:Disqord.Rest.RestDiscordClient"/> that was created using <see cref="!:CreateWithoutAuthorization(ILogger, IJsonSerializer)"/>.
+                If MFA is enabled, you must specify the <see cref="P:Disqord.Rest.RestRequestOptions.MfaCode"/>.
+                This method does not support captcha.
+            </summary>
+            <param name="email"> The email of the account. </param>
+            <param name="password"> The password of the account. </param>
+            <param name="options"> The optional <see cref="T:Disqord.Rest.RestRequestOptions"/> to use. </param>
+        </member>
+        <member name="M:Disqord.Rest.RestDiscordClient.LogoutAsync(Disqord.Rest.RestRequestOptions)">
+            <summary>
+                Performs a user account logout after it was logged in using <see cref="M:Disqord.Rest.RestDiscordClient.LoginAsync(System.String,System.String,Disqord.Rest.RestRequestOptions)"/>.
+            </summary>
+            <param name="options"> The optional <see cref="T:Disqord.Rest.RestRequestOptions"/> to use. </param>
+        </member>
+        <member name="P:Disqord.Rest.RestDiscordClientConfiguration.Logger">
+            <summary>
+                Gets or sets the logger the client should use.
+            </summary>
+        </member>
+        <member name="P:Disqord.Rest.RestDiscordClientConfiguration.Serializer">
+            <summary>
+                Gets or sets the JSON serializer the client should use.
+            </summary>
+        </member>
+        <member name="P:Disqord.Rest.RestDiscordClientConfiguration.DefaultMentions">
+            <summary>
+                Gets or sets the default mentions for messages.
+            </summary>
+        </member>
+        <member name="P:Disqord.Rest.RestDiscordClientConfiguration.DefaultRequestOptions">
+            <summary>
+                Gets or sets the default request options.
+            </summary>
+        </member>
+        <member name="T:Disqord.Rest.RestBan">
+            <summary>
+                Represents a guild ban.
+            </summary>
+        </member>
+        <member name="P:Disqord.Rest.RestBan.GuildId">
+            <summary>
+                Gets the guild's id.
+            </summary>
+        </member>
+        <member name="P:Disqord.Rest.RestBan.Guild">
+            <summary>
+                Gets the guild.
+            </summary>
+        </member>
+        <member name="P:Disqord.Rest.RestBan.User">
+            <summary>
+                Gets the banned user.
+            </summary>
+        </member>
+        <member name="P:Disqord.Rest.RestBan.Reason">
+            <summary>
+                Gets the reason.
+            </summary>
+        </member>
+        <member name="M:Disqord.Rest.RestBan.RevokeAsync(Disqord.Rest.RestRequestOptions)">
+            <summary>
+                Revokes this <see cref="T:Disqord.Rest.RestBan"/>, unbanning the <see cref="P:Disqord.Rest.RestBan.User"/>.
+            </summary>
+            <param name="options"></param>
+        </member>
+        <member name="T:Disqord.Rest.RestRelationship">
+            <summary>
+                Represents a relationship with a user.
+            </summary>
+        </member>
+        <member name="P:Disqord.Rest.RestRelationship.User">
+            <summary>
+                Gets the user the relationship is for.
+            </summary>
+        </member>
+        <member name="P:Disqord.Rest.RestRelationship.Type">
+            <summary>
+                Gets the type of the relationship.
+            </summary>
+        </member>
+        <member name="M:Disqord.Rest.RestRelationship.AcceptAsync(Disqord.Rest.RestRequestOptions)">
+            <summary>
+                Accepts this relationship if <see cref="P:Disqord.Rest.RestRelationship.Type"/> is <see cref="F:Disqord.RelationshipType.IncomingFriendRequest"/>. Throws otherwise.
+            </summary>
+            <exception cref="T:System.InvalidOperationException">
+                Relationship's type must be an incoming friend request.
+            </exception>
+        </member>
+        <member name="M:Disqord.Rest.RestRelationship.DeleteAsync(Disqord.Rest.RestRequestOptions)">
+            <summary>
+                Revokes this relationship regardless of <see cref="P:Disqord.Rest.RestRelationship.Type"/>.
+            </summary>
+        </member>
+        <member name="T:Disqord.Rest.RestDiscordEntity">
+            <summary>
+                Represents a REST Discord entity.
+            </summary>
+        </member>
+        <member name="P:Disqord.Rest.RestDiscordEntity.Client">
+            <inheritdoc cref="P:Disqord.IDiscordEntity.Client"/>
+        </member>
+        <member name="T:Disqord.Rest.RestSnowflakeEntity">
+            <summary>
+                Represents a REST Discord entity with a unique id.
+            </summary>
+        </member>
+        <member name="P:Disqord.Rest.RestSnowflakeEntity.Id">
+            <inheritdoc/>
+        </member>
+        <member name="P:Disqord.Rest.RestSnowflakeEntity.CreatedAt">
+            <inheritdoc/>
+        </member>
+        <member name="P:Disqord.Models.AuditLogEntryOptionsModel.DeleteMemberDays">
+            <summary>
+                <see cref="F:Disqord.AuditLogType.MembersPruned"/>
+            </summary>
+        </member>
+        <member name="P:Disqord.Models.AuditLogEntryOptionsModel.MembersRemoved">
+            <summary>
+                <see cref="F:Disqord.AuditLogType.MembersPruned"/>
+            </summary>
+        </member>
+        <member name="P:Disqord.Models.AuditLogEntryOptionsModel.ChannelId">
+            <summary>
+                <see cref="F:Disqord.AuditLogType.MembersMoved"/>
+                <para/>
+                <see cref="F:Disqord.AuditLogType.MessagesDeleted"/>
+                <para/>
+                <see cref="F:Disqord.AuditLogType.MessagesBulkDeleted"/>
+                <para/>
+                <see cref="F:Disqord.AuditLogType.MessagePinned"/>
+                <para/>
+                <see cref="F:Disqord.AuditLogType.MessageUnpinned"/>
+            </summary>
+        </member>
+        <member name="P:Disqord.Models.AuditLogEntryOptionsModel.MessageId">
+            <summary>
+                <see cref="F:Disqord.AuditLogType.MessagePinned"/>
+                <para/>
+                <see cref="F:Disqord.AuditLogType.MessageUnpinned"/>
+            </summary>
+        </member>
+        <member name="P:Disqord.Models.AuditLogEntryOptionsModel.Count">
+            <summary>
+                <see cref="F:Disqord.AuditLogType.MembersMoved"/>
+                <para/>
+                <see cref="F:Disqord.AuditLogType.MembersDisconnected"/>
+                <para/>
+                <see cref="F:Disqord.AuditLogType.MessagesDeleted"/>
+                <para/>
+                <see cref="F:Disqord.AuditLogType.MessagesBulkDeleted"/>
+            </summary>
+        </member>
+        <member name="P:Disqord.Models.AuditLogEntryOptionsModel.Id">
+            <summary>
+                <see cref="F:Disqord.AuditLogType.OverwriteCreated"/>
+                <para/>
+                <see cref="F:Disqord.AuditLogType.OverwriteUpdated"/>
+                <para/>
+                <see cref="F:Disqord.AuditLogType.OverwriteDeleted"/>
+            </summary>
+        </member>
+        <member name="P:Disqord.Models.AuditLogEntryOptionsModel.Type">
+            <summary>
+                <see cref="F:Disqord.AuditLogType.OverwriteCreated"/>
+                <para/>
+                <see cref="F:Disqord.AuditLogType.OverwriteUpdated"/>
+                <para/>
+                <see cref="F:Disqord.AuditLogType.OverwriteDeleted"/>
+            </summary>
+        </member>
+        <member name="P:Disqord.Models.AuditLogEntryOptionsModel.RoleName">
+            <summary>
+                <see cref="F:Disqord.AuditLogType.OverwriteCreated"/>
+                <para/>
+                <see cref="F:Disqord.AuditLogType.OverwriteUpdated"/>
+                <para/>
+                <see cref="F:Disqord.AuditLogType.OverwriteDeleted"/>
+            </summary>
+        </member>
+        <member name="T:Disqord.IDeletable">
+            <summary>
+                Represents a deletable Discord entity.
+            </summary>
+        </member>
+        <member name="M:Disqord.IDeletable.DeleteAsync(Disqord.Rest.RestRequestOptions)">
+            <summary>
+                Deletes this entity.
+            </summary>
+            <param name="options"> The request options. </param>
+        </member>
+        <member name="T:Disqord.IDiscordEntity">
+            <summary>
+                Represents a Discord entity.
+            </summary>
+        </member>
+        <member name="P:Disqord.IDiscordEntity.Client">
+            <summary>
+                Gets the client that created this entity.
+            </summary>
+        </member>
+        <member name="T:Disqord.ISnowflakeEntity">
+            <summary>
+                Represents a Discord entity with a unique <see cref="T:Disqord.Snowflake"/> ID.
+            </summary>
+        </member>
+        <member name="P:Disqord.ISnowflakeEntity.Id">
+            <summary>
+                Gets the ID of this entity.
+            </summary>
+        </member>
+        <member name="P:Disqord.ISnowflakeEntity.CreatedAt">
+            <summary>
+                Gets the creation date of this entity.
+                Short for <see cref="P:Disqord.Snowflake.CreatedAt"/> using <see cref="P:Disqord.ISnowflakeEntity.Id"/>.
+            </summary>
+        </member>
+        <member name="T:Disqord.LocalAttachment">
+            <summary>
+                Represents a local attachment to be sent to Discord.
+            </summary>
+        </member>
+        <member name="F:Disqord.LocalAttachment.SPOILER_PREFIX">
+            <summary>
+                The prefix for spoiler attachments.
+            </summary>
+        </member>
+        <member name="P:Disqord.LocalAttachment.Stream">
+            <summary>
+                Gets the <see cref="T:System.IO.Stream"/> to send.
+            </summary>
+        </member>
+        <member name="P:Disqord.LocalAttachment.FileName">
+            <summary>
+                Gets the file name.
+            </summary>
+        </member>
+        <member name="P:Disqord.LocalAttachment.IsSpoiler">
+            <summary>
+                Gets whether this attachment should be sent as a spoiler or not.
+            </summary>
+        </member>
+        <member name="M:Disqord.LocalAttachment.Dispose">
+            <summary>
+                Disposes of the <see cref="P:Disqord.LocalAttachment.Stream"/>.
+            </summary>
+        </member>
+        <member name="T:Disqord.LocalEmbedBuilder">
+            <summary>
+                Allows for building of <see cref="T:Disqord.LocalEmbed"/>s.
+                This class is not thread-safe.
+            </summary>
+        </member>
+        <member name="M:Disqord.LocalEmbedBuilder.Clone">
+            <summary>
+                Creates a deep copy of this <see cref="T:Disqord.LocalEmbedBuilder"/>.
+            </summary>
+            <returns>
+                A deep copy of this <see cref="T:Disqord.LocalEmbedBuilder"/>.
+            </returns>
+        </member>
+        <member name="T:Disqord.LocalEmbedFieldBuilderCollection">
+            <summary>
+                Represents a collection of <see cref="T:Disqord.LocalEmbedFieldBuilder"/>s.
+                This class is not thread-safe.
+            </summary>
+            <remarks>
+                Explicitly implemented collection members might not be supported.
+            </remarks>
+        </member>
+        <member name="M:Disqord.LocalEmbedFieldBuilderCollection.Add(Disqord.LocalEmbedFieldBuilder)">
+            <inheritdoc cref="M:System.Collections.Generic.List`1.Add(`0)"/>
+            <exception cref="T:System.ArgumentNullException"></exception>
+        </member>
+        <member name="M:Disqord.LocalEmbedFieldBuilderCollection.Clear">
+            <inheritdoc cref="M:System.Collections.Generic.List`1.Clear"/>
+        </member>
+        <member name="M:Disqord.LocalEmbedFieldBuilderCollection.Insert(System.Int32,Disqord.LocalEmbedFieldBuilder)">
+            <inheritdoc cref="M:System.Collections.Generic.List`1.Insert(System.Int32,`0)"/>
+            <exception cref="T:System.ArgumentNullException"></exception>
+        </member>
+        <member name="M:Disqord.LocalEmbedFieldBuilderCollection.Remove(Disqord.LocalEmbedFieldBuilder)">
+            <inheritdoc cref="M:System.Collections.Generic.List`1.Remove(`0)"/>
+            <exception cref="T:System.ArgumentNullException"></exception>
+        </member>
+        <member name="M:Disqord.LocalEmbedFieldBuilderCollection.RemoveAll(System.Predicate{Disqord.LocalEmbedFieldBuilder})">
+            <inheritdoc cref="M:System.Collections.Generic.List`1.RemoveAll(System.Predicate{`0})"/>
+        </member>
+        <member name="M:Disqord.LocalEmbedFieldBuilderCollection.RemoveAt(System.Int32)">
+            <inheritdoc cref="M:System.Collections.Generic.List`1.RemoveAt(System.Int32)"/>
+        </member>
+        <member name="M:Disqord.LocalEmbedFieldBuilderCollection.Sort(System.Comparison{Disqord.LocalEmbedFieldBuilder})">
+            <inheritdoc cref="M:System.Collections.Generic.List`1.Sort(System.Comparison{`0})"/>
+        </member>
+        <member name="M:Disqord.LocalEmbedFieldBuilderCollection.Exists(System.Predicate{Disqord.LocalEmbedFieldBuilder})">
+            <inheritdoc cref="M:System.Collections.Generic.List`1.Exists(System.Predicate{`0})"/>
+        </member>
+        <member name="M:Disqord.LocalEmbedFieldBuilderCollection.GetEnumerator">
+            <inheritdoc cref="M:System.Collections.Generic.List`1.GetEnumerator"/>
+        </member>
+        <member name="M:Disqord.LocalMentionsBuilder.Clone">
+            <summary>
+                Creates a deep copy of this <see cref="T:Disqord.LocalMentionsBuilder"/>.
+            </summary>
+            <returns>
+                A deep copy of this <see cref="T:Disqord.LocalMentionsBuilder"/>.
+            </returns>
+        </member>
+        <member name="T:Disqord.LocalMentions">
+            <summary>
+                Represents mentions for a Discord message.
+            </summary>
+        </member>
+        <member name="F:Disqord.LocalMentions.None">
+            <summary>
+                All mentions in the message's content are ignored.
+            </summary>
+        </member>
+        <member name="F:Disqord.LocalMentions.NoEveryone">
+            <summary>
+                All everyone mentions in the message's content are ignored.
+            </summary>
+        </member>
+        <member name="P:Disqord.LocalMentions.ParsedMentions">
+            <summary>
+                Gets the mention types Discord will parse from the message's content.
+            </summary>
+        </member>
+        <member name="P:Disqord.LocalMentions.UserIds">
+            <summary>
+                Gets the user ids that are going to be mentioned.
+            </summary>
+        </member>
+        <member name="P:Disqord.LocalMentions.RoleIds">
+            <summary>
+                Gets the role ids that are going to be mentioned.
+            </summary>
+        </member>
+        <member name="P:Disqord.Embed.IsRich">
+            <summary>
+                Checks if <see cref="P:Disqord.Embed.Type"/> equals 'rich'.
+            </summary>
+        </member>
+        <member name="T:Disqord.SnowflakeOptional`1">
+            <summary>
+                Represents an always present <see cref="T:Disqord.Snowflake"/> and an optional <see cref="T:Disqord.ISnowflakeEntity"/>.
+            </summary>
+            <typeparam name="T"> The type of the entity. </typeparam>
+        </member>
+        <member name="P:Disqord.SnowflakeOptional`1.Id">
+            <inheritdoc cref="P:Disqord.ISnowflakeEntity.Id"/>
+        </member>
+        <member name="P:Disqord.SnowflakeOptional`1.HasValue">
+            <summary>
+                Gets whether this <see cref="T:Disqord.SnowflakeOptional`1"/> has a value.
+            </summary>
+        </member>
+        <member name="P:Disqord.SnowflakeOptional`1.Value">
+            <summary>
+                Gets the value of this <see cref="T:Disqord.SnowflakeOptional`1"/>.
+            </summary>
+            <exception cref="T:System.InvalidOperationException">
+                This optional snowflake entity does not have a value.
+            </exception>
+        </member>
+        <member name="M:Disqord.SnowflakeOptional`1.GetHashCode">
+            <summary>
+                Returns a hash code for this <see cref="T:Disqord.SnowflakeOptional`1"/>.
+            </summary>
+            <returns>
+                The hash code.
+            </returns>
+        </member>
+        <member name="M:Disqord.SnowflakeOptional`1.ToString">
+            <summary>
+                Returns the string representation of this <see cref="T:Disqord.SnowflakeOptional`1"/>.
+            </summary>
+            <returns>
+                The string representation of this <see cref="T:Disqord.SnowflakeOptional`1"/>.
+            </returns>
+        </member>
+        <member name="M:Disqord.SnowflakeOptional`1.Equals(System.Object)">
+            <summary>
+                Checks whether this <see cref="T:Disqord.SnowflakeOptional`1"/> or this <see cref="P:Disqord.SnowflakeOptional`1.Value"/> are equal to the specified <see cref="T:System.Object"/>.
+            </summary>
+            <param name="obj"> The <see cref="T:System.Object"/> to compare against. </param>
+            <returns>
+                The <see cref="T:System.Boolean"/> value reresenting whether the comparison succeeded.
+            </returns>
+        </member>
+        <member name="M:Disqord.SnowflakeOptional`1.Equals(`0)">
+            <summary>
+                Checks whether this <see cref="P:Disqord.SnowflakeOptional`1.Value"/> is equal to the specified <typeparamref name="T"/> value.
+            </summary>
+            <param name="other"> The <typeparamref name="T"/> value to compare against. </param>
+            <returns>
+                The <see cref="T:System.Boolean"/> value reresenting whether the comparison succeeded.
+            </returns>
+        </member>
+        <member name="T:Disqord.ConnectionVisibility">
+            <summary>
+                Represents the visibility of a user's connection.
+            </summary>
+        </member>
+        <member name="F:Disqord.ConnectionVisibility.None">
+            <summary>
+                Invisible to everyone except the user themselves.
+            </summary>
+        </member>
+        <member name="F:Disqord.ConnectionVisibility.Everyone">
+            <summary>
+                Visible to everyone.
+            </summary>
+        </member>
+        <member name="T:Disqord.ParsedMention">
+            <summary>
+                Represents mention types in a message's content that will be parsed by Discord.
+            </summary>
+        </member>
+        <member name="F:Disqord.ParsedMention.None">
+            <summary>
+                No mentions will be parsed.
+            </summary>
+        </member>
+        <member name="F:Disqord.ParsedMention.Everyone">
+            <summary>
+                Everyone mentions will be parsed.
+            </summary>
+        </member>
+        <member name="F:Disqord.ParsedMention.Users">
+            <summary>
+                User mentions will be parsed.
+            </summary>
+        </member>
+        <member name="F:Disqord.ParsedMention.Roles">
+            <summary>
+                Role mentions will be parsed.
+            </summary>
+        </member>
+        <member name="F:Disqord.ParsedMention.All">
+            <summary>
+                All mentions will be parsed.
+            </summary>
+        </member>
+        <member name="T:Disqord.SystemMessageType">
+            <summary>
+                Represents the type of a message.
+            </summary>
+        </member>
+        <member name="F:Disqord.SystemMessageType.RecipientAdded">
+            <summary>
+                Represents a system message indicating a recipient has been added to a private channel.
+            </summary>
+        </member>
+        <member name="F:Disqord.SystemMessageType.RecipientRemoved">
+            <summary>
+                Represents a system message indicating a recipient has been removed from a private channel.
+            </summary>
+        </member>
+        <member name="F:Disqord.SystemMessageType.Call">
+            <summary>
+                Represents a system message indicating a call has been started or missed.
+            </summary>
+        </member>
+        <member name="F:Disqord.SystemMessageType.ChannelNameChanged">
+            <summary>
+                Represents a system message indicating the name of a private channel has been changed.
+            </summary>
+        </member>
+        <member name="F:Disqord.SystemMessageType.ChannelIconChanged">
+            <summary>
+                Represents a system message indicating the icon of a private channel has been changed.
+            </summary>
+        </member>
+        <member name="F:Disqord.SystemMessageType.ChannelMessagePinned">
+            <summary>
+                Represents a system message indicating a message a channel has been pinned.
+            </summary>
+        </member>
+        <member name="F:Disqord.SystemMessageType.MemberJoined">
+            <summary>
+                Represents a system message indicating a new member has joined a guild.
+            </summary>
+        </member>
+        <member name="F:Disqord.SystemMessageType.GuildBoosted">
+            <summary>
+                Represents a system message indicating a member has boosted a guild.
+            </summary>
+        </member>
+        <member name="F:Disqord.SystemMessageType.GuildBoostedFirstTier">
+            <summary>
+                Represents a system message indicating a member has boosted a guild and it achieved <see cref="F:Disqord.BoostTier.First"/>.
+            </summary>
+        </member>
+        <member name="F:Disqord.SystemMessageType.GuildBoostedSecondTier">
+            <summary>
+                Represents a system message indicating a member has boosted a guild and it achieved <see cref="F:Disqord.BoostTier.Second"/>.
+            </summary>
+        </member>
+        <member name="F:Disqord.SystemMessageType.GuildBoostedThirdTier">
+            <summary>
+                Represents a system message indicating a member has boosted a guild and it achieved <see cref="F:Disqord.BoostTier.Third"/>.
+            </summary>
+        </member>
+        <member name="F:Disqord.SystemMessageType.ChannelFollowed">
+            <summary>
+                Represents a system message indicating a member has followed another channel.
+            </summary>
+        </member>
+        <member name="T:Disqord.UserStatus">
+            <summary>
+                Represents various user statuses.
+            </summary>
+        </member>
+        <member name="F:Disqord.UserStatus.Offline">
+            <summary>
+                Represents an offline user.
+            </summary>
+        </member>
+        <member name="F:Disqord.UserStatus.Invisible">
+            <summary>
+                Represents an invisible user.
+            </summary>
+        </member>
+        <member name="F:Disqord.UserStatus.Idle">
+            <summary>
+                Represents an idle user.
+            </summary>
+        </member>
+        <member name="F:Disqord.UserStatus.DoNotDisturb">
+            <summary>
+                Represents a user who wishes to not be disturbed.
+            </summary>
+        </member>
+        <member name="F:Disqord.UserStatus.Online">
+            <summary>
+                Represents an online user.
+            </summary>
+        </member>
+        <member name="T:Disqord.DefaultAvatarColor">
+            <summary>
+                Represents a default Discord user avatar value.
+            </summary>
+        </member>
+        <member name="F:Disqord.DefaultAvatarColor.Blurple">
+            <summary>
+                The blurple default user avatar.
+            </summary>
+        </member>
+        <member name="F:Disqord.DefaultAvatarColor.Gray">
+            <summary>
+                The gray default user avatar.
+            </summary>
+        </member>
+        <member name="F:Disqord.DefaultAvatarColor.Green">
+            <summary>
+                The green default user avatar.
+            </summary>
+        </member>
+        <member name="F:Disqord.DefaultAvatarColor.Yellow">
+            <summary>
+                The yellow default user avatar.
+            </summary>
+        </member>
+        <member name="F:Disqord.DefaultAvatarColor.Red">
+            <summary>
+                The red default user avatar.
+            </summary>
+        </member>
+        <member name="T:Disqord.Discord">
+            <summary>
+                Provides various Discord utilities.
+            </summary>
+        </member>
+        <member name="T:Disqord.Discord.Cdn">
+            <summary>
+                Provides various Discord CDN utilities.
+            </summary>
+        </member>
+        <member name="F:Disqord.Discord.Cdn.URL">
+            <summary>
+                Represents the default Discord CDN url.
+            </summary>
+        </member>
+        <member name="M:Disqord.Discord.Cdn.GetCustomEmojiUrl(Disqord.Snowflake,System.Boolean,System.Int32)">
+            <summary>
+                Returns the url for a custom emoji.
+            </summary>
+            <param name="emojiId"> The custom emoji's id. </param>
+            <param name="isAnimated"> Whether the custom emoji is animated or not. </param>
+            <param name="size"> The size of the custom emoji. </param>
+            <returns>
+                The url of the custom emoji.
+            </returns>
+        </member>
+        <member name="M:Disqord.Discord.Cdn.GetGuildIconUrl(Disqord.Snowflake,System.String,Disqord.ImageFormat,System.Int32)">
+            <summary>
+                Returns the url for a guild's icon.
+            </summary>
+            <param name="guildId"> The guild's id. </param>
+            <param name="iconHash"> The guild's icon hash. </param>
+            <param name="format"> The format to use. </param>
+            <param name="size"> The size of the guild icon. </param>
+            <returns>
+                The url of the guild icon.
+            </returns>
+        </member>
+        <member name="M:Disqord.Discord.Cdn.GetGuildSplashUrl(Disqord.Snowflake,System.String,Disqord.ImageFormat,System.Int32)">
+            <summary>
+                Returns the url for a guild's splash.
+            </summary>
+            <param name="guildId"> The guild's id. </param>
+            <param name="splashHash"> The guild's splash hash. </param>
+            <param name="format"> The format to use. </param>
+            <param name="size"> The size of the guild splash. </param>
+            <returns>
+                The url of the guild's splash.
+            </returns>
+        </member>
+        <member name="M:Disqord.Discord.Cdn.GetGuildDiscoverySplashUrl(Disqord.Snowflake,System.String,Disqord.ImageFormat,System.Int32)">
+            <summary>
+                Returns the url for a guild's discovery splash.
+            </summary>
+            <param name="guildId"> The guild's id. </param>
+            <param name="discoverySplashHash"> The guild's discovery splash hash. </param>
+            <param name="format"> The format to use. </param>
+            <param name="size"> The size of the discovery guild splash. </param>
+            <returns>
+                The url of the guild's discovery splash.
+            </returns>
+        </member>
+        <member name="M:Disqord.Discord.Cdn.GetGuildBannerUrl(Disqord.Snowflake,System.String,Disqord.ImageFormat,System.Int32)">
+            <summary>
+                Returns the url for a guild's banner.
+            </summary>
+            <param name="guildId"> The guild's id. </param>
+            <param name="bannerHash"> The guild's banner hash. </param>
+            <param name="format"> The format to use. </param>
+            <param name="size"> The size of the guild banner. </param>
+            <returns>
+                The url of the guild's banner.
+            </returns>
+        </member>
+        <member name="M:Disqord.Discord.Cdn.GetDefaultUserAvatarUrl(System.String)">
+            <summary>
+                Returns the url for a default user avatar.
+            </summary>
+            <param name="userDiscriminator"> The user's discriminator. </param>
+            <returns>
+                The url of the default user avatar.
+            </returns>
+        </member>
+        <member name="M:Disqord.Discord.Cdn.GetDefaultUserAvatarUrl(Disqord.DefaultAvatarColor)">
+            <summary>
+                Returns the url for a default user avatar.
+            </summary>
+            <param name="color"> The avatar color to return. </param>
+            <returns>
+                The url of the default user avatar.
+            </returns>
+        </member>
+        <member name="M:Disqord.Discord.Cdn.GetDefaultUserAvatarUrl(System.Byte)">
+            <summary>
+                Returns the url for a default user avatar.
+            </summary>
+            <param name="color"> The avatar color to return. </param>
+            <returns>
+                The url of the default user avatar.
+            </returns>
+        </member>
+        <member name="M:Disqord.Discord.Cdn.GetUserAvatarUrl(Disqord.Snowflake,System.String,Disqord.ImageFormat,System.Int32)">
+            <summary>
+                Returns the url for a user's avatar.
+            </summary>
+            <param name="userId"> The user's id. </param>
+            <param name="avatarHash"> The user's avatar hash. </param>
+            <param name="format"> The format to use. </param>
+            <param name="size"> The size of the user's avatar. </param>
+            <returns>
+                The url of the user's avatar.
+            </returns>
+        </member>
+        <member name="M:Disqord.Discord.Cdn.GetApplicationIconUrl(Disqord.Snowflake,System.String,Disqord.ImageFormat,System.Int32)">
+            <summary>
+                Returns the url for an application's icon url.
+            </summary>
+            <param name="applicationId"> The application's id. </param>
+            <param name="iconHash"> The application's icon hash. </param>
+            <param name="format"> The format to use. </param>
+            <param name="size"> The size of the application's icon. </param>
+            <returns>
+                The url of the application's icon.
+            </returns>
+        </member>
+        <member name="T:Disqord.Discord.Comparers">
+            <summary>
+                Provides equality comparer instances in one place.
+            </summary>
+        </member>
+        <member name="T:Disqord.ImageFormat">
+            <summary>
+                Represents the format of an image.
+            </summary>
+        </member>
+        <member name="F:Disqord.ImageFormat.Default">
+            <summary>
+                The default format for the specific image.
+            </summary>
+        </member>
+        <member name="F:Disqord.ImageFormat.Png">
+            <summary>
+                The PNG format.
+            </summary>
+        </member>
+        <member name="F:Disqord.ImageFormat.Jpg">
+            <summary>
+                The JPG (JPEG) format.
+            </summary>
+        </member>
+        <member name="F:Disqord.ImageFormat.WebP">
+            <summary>
+                The WebP format.
+            </summary>
+        </member>
+        <member name="F:Disqord.ImageFormat.Gif">
+            <summary>
+                The GIF format.
+            </summary>
+        </member>
+        <member name="F:Disqord.Markdown.EscapedCharacters">
+            <summary>
+                The set containing the escaped markdown characters.
+            </summary>
+        </member>
+    </members>
+</doc>
